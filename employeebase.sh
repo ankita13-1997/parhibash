@@ -1,13 +1,20 @@
 #! /bin/bash -x
 echo "_________welcome employee to employee desk_____________"
-isPresent=1
-c=$(($RANDOM%2))
+isfull=1
+ishalf=2
+c=$((RANDOM%3))
 
-if [[ $c -eq $isPresent ]]
-then
-salary=$((8*20))
+case $c in
+  $isfull)
+      emphrs=20
+      ;;
+  $ishalf)
+      emphrs=8
+       ;;
+      *)
+      emphrs=0
+       ;;
+esac
+salary=$(($emphrs*20))
 echo $salary
-else
-salary=$((20*0))
-echo $salary
-fi
+
